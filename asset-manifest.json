@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Vishwa112003/demo1.git/static/css/main.c00dc5ac.css",
+    "main.js": "/Vishwa112003/demo1.git/static/js/main.d5353d93.js",
+    "static/js/453.daecb6e1.chunk.js": "/Vishwa112003/demo1.git/static/js/453.daecb6e1.chunk.js",
+    "index.html": "/Vishwa112003/demo1.git/index.html",
+    "main.c00dc5ac.css.map": "/Vishwa112003/demo1.git/static/css/main.c00dc5ac.css.map",
+    "main.d5353d93.js.map": "/Vishwa112003/demo1.git/static/js/main.d5353d93.js.map",
+    "453.daecb6e1.chunk.js.map": "/Vishwa112003/demo1.git/static/js/453.daecb6e1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c00dc5ac.css",
+    "static/js/main.d5353d93.js"
+  ]
+}
