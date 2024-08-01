@@ -1,22 +1,21 @@
-// import logo from './logo.svg';
-import './App.css';
-import Navbar from './components/Navbar';
-import TextForm from './components/TextForm';
 import React, { useState } from 'react';
-import Alert from './components/Alert';
-import About from './components/About';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+import Navbar from './components/Navbar';
+import TextForm from './components/TextForm';
+import Alert from './components/Alert';
+import About from './components/About';
+import './App.css';
 
 function App() {
   const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
-    setAlert({
+    setAlert({ 
       msg: message,
       type: type
     });
@@ -31,7 +30,7 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#455a70';
       showAlert("Dark mode has been enabled", "success");
-      document.title = 'TextUtils - Dark Mode';
+      // document.title = 'TextUtils - Dark Mode';
 
       setInterval(() => {
         document.title = 'TextUtils is Amazing Mode';
@@ -44,19 +43,20 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-      document.title = 'TextUtils - Light Mode';
+      // document.title = 'TextUtils - Light Mode';
     }
   }
 
   return (
     <>
       <Router>
-        <Navbar title="Navbar" aboutText="About" mode={mode} toggleMode={toggleMode} />
+        
+        <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route exact path="/about" element={<About />} />
             <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter your text here" mode={mode} />} />
+            <Route path="/about" element={<About mode={mode}/>} />
           </Routes>
         </div>
       </Router>

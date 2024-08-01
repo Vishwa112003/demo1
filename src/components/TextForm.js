@@ -30,6 +30,7 @@ export default function TextForm(props) {
       text.select();
       text.setSelectionRange (0, 9999);
       navigator.clipboard.writeText(text.value);
+      document.getSelection().removeAllRanges();
       props.showAlert ("Copied to Clipboard!","success");
     }
       const handleExtraSpaces=()=>{
@@ -47,23 +48,24 @@ export default function TextForm(props) {
     <div className="container" style={{color:props.mode==='dark'?'white':'black'}}>
         <h1 >{props.heading}</h1>
       <div className="mb-3">
-      <textarea className="form-control" value={text} onChange={onchange} style={{backgroundColor:props.mode==='dark'?'#455a70':'white', color:props.mode==='dark'?'white':'black' }} id="myBox" rows="10" placeholder='Type here...'></textarea>
+      <textarea className="form-control" value={text} onChange={onchange} style={{backgroundColor:props.mode==='dark'?'rgb(26 32 38)':'white', color:props.mode==='dark'?'white':'black' }} id="myBox" rows="10" placeholder='Type here...'></textarea>
       </div>
-      <button className="btn btn-primary mx-2 " onClick={uppercase}>UPPERCASE</button>
-      <button className="btn btn-primary mx-2" onClick={lowercase}>lowercase</button>
-      <button className="btn btn-primary mx-2" onClick={cleartext}>Clear text</button>
-      <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy text</button>
-      <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove extra space</button>
+      <button disabled={text.length===0} className="btn btn-primary mx-2 my-1 " onClick={uppercase}>UPPERCASE</button>
+      <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={lowercase}>lowercase</button>
+      <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={cleartext}>Clear text</button>
+      <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleCopy}>Copy text</button>
+      <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleExtraSpaces}>Remove extra space</button>
       
     </div>
-    <div className="container my-2" style={{color:props.mode==='dark'?'white':'black'}}>
-        <h2>Summary</h2>
-        <p>{text===""? 0 : wordCount(text)} words and {text.length} characters</p>
-        <p>{ text===""? 0 * 0.008 : wordCount(text) * 0.008} Minutes read</p>
+    <div className="container my-2" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
+    <h2>Summary</h2>
+    <p>{text === "" ? 0 : wordCount(text)} words and {text.length} characters</p>
+    <p>{0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} Minutes read</p>
 
-        <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter something in the textbox above to preview"}</p>
-    </div>
+    <h2>Preview</h2>
+    <p>{text.length > 0 ? text : "Enter something in the textbox above to preview"}</p>
+</div>
+
     </>
   )
 }
